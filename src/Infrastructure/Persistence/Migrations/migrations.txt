@@ -1,0 +1,37 @@
+-- https://docs.microsoft.com/ru-ru/ef/core/cli/dotnet
+-- https://metanit.com/sharp/entityframeworkcore/2.15.php
+-- https://metanit.com/sharp/efcore/2.2.php
+
+-- Установка dotnet-ef
+
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+-- В следующем примере выполняется формирование шаблонов всех схем и таблиц и помещается новые файлы в папку Models 
+
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+-- Если необходимо создать миграции в другом проекте (не главном), например, в Infrastructure.
+-- src
+--     Application
+--     Domain
+--     Infrastructure
+--     WebUI (главный)
+
+-- Переходим в папку проекта
+cd \src\Infrastructure
+
+-- Добавляем миграцию
+dotnet ef migrations add InitialCreate -o Persistence\Migrations\ -s ..\WebUI\
+
+-- Удаляем миграции
+dotnet ef migrations remove -s ..\WebUI\
+
+-- Добавляем миграцию как sql скрипт
+dotnet ef migrations script -i -o Persistence\Migrations\sql_Initial.sql -s ..\WebUI\
+
+-- создает скрипт SQL из DbContext. Обход всех миграций.
+dotnet ef dbcontext script -i -o Persistence\Migrations\sql_Initial.sql -s ..\WebUI\
+
+-- Для выполнения миграции
+dotnet ef database update
