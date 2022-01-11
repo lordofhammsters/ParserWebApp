@@ -36,7 +36,7 @@ public class ParseUrlCommandTests : CommandTestBase
         var mediatorMock = new Mock<IMediator>();
         var loggerMock = new Mock<ILogger<ParseUrlCommand.ParseUrlCommandHandler>>();
         
-        var sut = new ParseUrlCommand.ParseUrlCommandHandler(httpClientFactoryMock.Object, loggerMock.Object, mediatorMock.Object, _context);
+        var sut = new ParseUrlCommand.ParseUrlCommandHandler(httpClientFactoryMock.Object, loggerMock.Object, mediatorMock.Object, Context);
         var url = "https://www.simbirsoft.com/";
 
         // Act

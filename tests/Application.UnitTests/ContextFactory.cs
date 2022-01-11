@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.UnitTests;
 
-public class ContextFactory
+public static class DbContextFactory
 {
     public static ApplicationDbContext Create()
     {

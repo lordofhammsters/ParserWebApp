@@ -1,18 +1,19 @@
+using System;
 using Infrastructure.Persistence;
 
 namespace Application.UnitTests;
 
-public class CommandTestBase
+public class CommandTestBase : IDisposable
 {
-    protected readonly ApplicationDbContext _context;
+    protected readonly ApplicationDbContext Context;
 
     public CommandTestBase()
     {
-        _context = ContextFactory.Create();
+        Context = DbContextFactory.Create();
     }
 
     public void Dispose()
     {
-        ContextFactory.Destroy(_context);
+        DbContextFactory.Destroy(Context);
     }
 }

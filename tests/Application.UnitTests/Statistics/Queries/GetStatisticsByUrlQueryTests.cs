@@ -16,7 +16,7 @@ public class GetStatisticsByUrlQueryTests : CommandTestBase
     [OneTimeSetUp]
     public async Task Init()
     {
-        _context.StatisticSites.Add(new StatisticSite()
+        Context.StatisticSites.Add(new StatisticSite()
         {
             Url = TestUrl,
             Created = DateTime.Now,
@@ -25,13 +25,13 @@ public class GetStatisticsByUrlQueryTests : CommandTestBase
                 new StatisticSiteWord() {Word = TestWord, Count = 5}
             }
         });
-        await _context.SaveChangesAsync();
+        await Context.SaveChangesAsync();
     }
     
     [Test]
     public async Task GetStatisticsByUrlTest()
     {
-        var sut = new GetStatisticsByUrlQueryHandler(_context);
+        var sut = new GetStatisticsByUrlQueryHandler(Context);
 
         // Act
         var result = await sut.Handle(new GetStatisticsByUrlQuery { Url = TestUrl }, CancellationToken.None);
