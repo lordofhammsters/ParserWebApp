@@ -1,12 +1,12 @@
-using Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ParserWebApp.Application.Common.Interfaces;
 
-namespace Application.Statistics.Queries.GetStatisticsByUrl;
+namespace ParserWebApp.Application.Statistics.Queries.GetStatisticsByUrl;
 
 public class GetStatisticsByUrlQuery : IRequest<StatisticsItems>
 {
-    public string Url { get; set; }
+    public string? Url { get; set; }
 }
 
 public class GetStatisticsByUrlQueryHandler : IRequestHandler<GetStatisticsByUrlQuery, StatisticsItems>
@@ -20,6 +20,9 @@ public class GetStatisticsByUrlQueryHandler : IRequestHandler<GetStatisticsByUrl
 
     public async Task<StatisticsItems> Handle(GetStatisticsByUrlQuery request, CancellationToken cancellationToken)
     {
+        if (string.IsNullOrWhiteSpace(request.Url))
+            return new StatisticsItems() {Items = new List<StatisticsItemDto>()};
+        
         var url = request.Url.ToLower();
 
         var items = await _context.StatisticSiteWords

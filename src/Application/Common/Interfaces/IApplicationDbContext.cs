@@ -1,7 +1,7 @@
-using Domain.Entities.Statistics;
 using Microsoft.EntityFrameworkCore;
+using ParserWebApp.Domain.Entities.Statistics;
 
-namespace Application.Common.Interfaces;
+namespace ParserWebApp.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {

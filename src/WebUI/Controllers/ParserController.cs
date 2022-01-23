@@ -1,13 +1,14 @@
-using Application.Statistics.Commands.ParseUrl;
 using Microsoft.AspNetCore.Mvc;
+using ParserWebApp.Application.Statistics.Commands.ParseUrl;
+using ParserWebApp.Application.Statistics.Queries.GetStatisticsByUrl;
 
-namespace WebUI.Controllers;
+namespace ParserWebApp.WebUI.Controllers;
 
 public class ParserController : ApiBaseController
 {
     [HttpPost]
-    public async Task<IActionResult> Parse(ParseUrlCommand command)
+    public async Task<ActionResult<StatisticsItems>> Parse(ParseUrlCommand command)
     {
-        return Json(await Mediator.Send(command));
+        return await Mediator.Send(command);
     }
 }

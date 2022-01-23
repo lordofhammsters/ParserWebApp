@@ -1,14 +1,12 @@
-using Domain.Entities.Statistics;
-
-namespace Application.Statistics.Queries.GetStatisticsByUrl;
+namespace ParserWebApp.Application.Statistics.Queries.GetStatisticsByUrl;
 
 public class StatisticsItems
 {
-    public List<StatisticsItemDto> Items { get; set; }
+    public List<StatisticsItemDto>? Items { get; set; }
 }
 
 public class StatisticsItemDto
 {
-    public string Word { get; set; }
+    public string Word { get; set; } = null!;
     public int Count { get; set; }
 }

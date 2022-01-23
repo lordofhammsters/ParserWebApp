@@ -1,4 +1,4 @@
-namespace Domain.Entities.Statistics;
+namespace ParserWebApp.Domain.Entities.Statistics;
 
 public class StatisticSiteWord
 {
@@ -6,9 +6,9 @@ public class StatisticSiteWord
     
     public int StatisticSiteId { get; set; }
     
-    public string Word { get; set; }
-    
+    public string Word { get; set; } = null!;
+
     public int Count { get; set; }
     
-    public StatisticSite Site { get; set; }
+    public StatisticSite Site { get; set; } = null!;
 }

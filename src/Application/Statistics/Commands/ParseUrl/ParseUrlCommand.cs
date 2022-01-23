@@ -1,16 +1,16 @@
-using Application.Common.Exceptions;
-using Application.Common.Interfaces;
-using Application.Statistics.Queries.GetStatisticsByUrl;
-using Domain.Entities.Statistics;
 using HtmlAgilityPack;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using ParserWebApp.Application.Common.Exceptions;
+using ParserWebApp.Application.Common.Interfaces;
+using ParserWebApp.Application.Statistics.Queries.GetStatisticsByUrl;
+using ParserWebApp.Domain.Entities.Statistics;
 
-namespace Application.Statistics.Commands.ParseUrl;
+namespace ParserWebApp.Application.Statistics.Commands.ParseUrl;
 
 public class ParseUrlCommand : IRequest<StatisticsItems>
 {
-    public string Url { get; set; }
+    public string? Url { get; set; }
 
     public class ParseUrlCommandHandler : IRequestHandler<ParseUrlCommand, StatisticsItems>
     {
@@ -35,10 +35,10 @@ public class ParseUrlCommand : IRequest<StatisticsItems>
         
         public async Task<StatisticsItems> Handle(ParseUrlCommand command, CancellationToken cancellationToken)
         {
-            var url = command.Url.ToLower();
+            var url = command.Url!.ToLower();
 
             var statistics = await _mediator.Send(new GetStatisticsByUrlQuery() {Url = url}, cancellationToken);
-            if (statistics != null && statistics.Items != null && statistics.Items.Count > 0)
+            if (statistics.Items != null && statistics.Items.Count > 0)
                 return statistics;
             
             var dictionary = await ParseSiteToWordsAsync(url, cancellationToken);

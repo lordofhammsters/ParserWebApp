@@ -1,8 +1,8 @@
-using Domain.Entities.Statistics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ParserWebApp.Domain.Entities.Statistics;
 
-namespace Infrastructure.Persistence.Configurations;
+namespace ParserWebApp.Infrastructure.Persistence.Configurations;
 
 public class StatisticSiteConfiguration : IEntityTypeConfiguration<StatisticSite>
 {

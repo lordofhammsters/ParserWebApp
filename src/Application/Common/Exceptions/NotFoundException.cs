@@ -1,4 +1,4 @@
-namespace Application.Common.Exceptions;
+namespace ParserWebApp.Application.Common.Exceptions;
 
 public class NotFoundException : Exception
 {

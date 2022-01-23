@@ -1,10 +1,10 @@
-using Application;
-using Application.Common.Filters;
 using FluentValidation.AspNetCore;
-using Infrastructure;
 using Microsoft.Net.Http.Headers;
 using NLog;
 using NLog.Web;
+using ParserWebApp.Application;
+using ParserWebApp.Application.Common.Filters;
+using ParserWebApp.Infrastructure;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();

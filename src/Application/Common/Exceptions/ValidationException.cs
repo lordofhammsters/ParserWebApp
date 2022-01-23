@@ -1,6 +1,6 @@
 using FluentValidation.Results;
 
-namespace Application.Common.Exceptions;
+namespace ParserWebApp.Application.Common.Exceptions;
 
 public class ValidationException : Exception
 {

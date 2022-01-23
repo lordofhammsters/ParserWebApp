@@ -1,10 +1,10 @@
 using System.Reflection;
-using Application.Common.Behaviours;
 using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using ParserWebApp.Application.Common.Behaviours;
 
-namespace Application;
+namespace ParserWebApp.Application;
 
 public static class DependencyInjection
 {

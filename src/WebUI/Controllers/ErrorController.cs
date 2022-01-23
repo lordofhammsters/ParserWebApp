@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using WebUI.Models;
+using ParserWebApp.WebUI.Models;
 
-namespace WebUI.Controllers;
+namespace ParserWebApp.WebUI.Controllers;
 
 [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 public class ErrorController : Controller

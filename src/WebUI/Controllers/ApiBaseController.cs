@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebUI.Controllers;
+namespace ParserWebApp.WebUI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

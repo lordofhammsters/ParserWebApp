@@ -1,9 +1,9 @@
 using System.Reflection;
-using Application.Common.Interfaces;
-using Domain.Entities.Statistics;
 using Microsoft.EntityFrameworkCore;
+using ParserWebApp.Application.Common.Interfaces;
+using ParserWebApp.Domain.Entities.Statistics;
 
-namespace Infrastructure.Persistence;
+namespace ParserWebApp.Infrastructure.Persistence;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {

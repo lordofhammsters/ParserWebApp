@@ -1,4 +1,4 @@
-namespace Domain.Entities.Statistics;
+namespace ParserWebApp.Domain.Entities.Statistics;
 
 public class StatisticSite
 {
@@ -9,7 +9,7 @@ public class StatisticSite
     
     public int Id { get; set; }
     
-    public string Url { get; set; }
+    public string? Url { get; set; }
     
     public DateTime Created { get; set; }
     

@@ -1,4 +1,4 @@
-namespace WebUI.Models;
+namespace ParserWebApp.WebUI.Models;
 
 public class ErrorViewModel
 {

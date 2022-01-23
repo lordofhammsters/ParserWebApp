@@ -2,15 +2,16 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Statistics.Queries.GetStatisticsByUrl;
-using Domain.Entities.Statistics;
+using FluentAssertions;
 using NUnit.Framework;
+using ParserWebApp.Application.Statistics.Queries.GetStatisticsByUrl;
+using ParserWebApp.Domain.Entities.Statistics;
 
 namespace Application.UnitTests.Statistics.Queries;
 
 public class GetStatisticsByUrlQueryTests : CommandTestBase
 {
-    private const string TestUrl = "https://www.simbirsoft.com/";
+    private const string TestUrl = "https://www.test.com/";
     private const string TestWord = "разработка";
     
     [OneTimeSetUp]
@@ -37,8 +38,9 @@ public class GetStatisticsByUrlQueryTests : CommandTestBase
         var result = await sut.Handle(new GetStatisticsByUrlQuery { Url = TestUrl }, CancellationToken.None);
 
         // Assert
-        Assert.NotNull(result);
-        Assert.AreEqual(1, result.Items.Count);
-        Assert.AreEqual(true, result.Items.Any(x => x.Word.Equals(TestWord, StringComparison.OrdinalIgnoreCase)));
+        result.Should().NotBeNull();
+        result.Items.Should().NotBeNull();
+        result.Items!.Count.Should().Be(1);
+        result.Items.Any(x => x.Word.Equals(TestWord, StringComparison.OrdinalIgnoreCase)).Should().BeTrue();
     }
 }

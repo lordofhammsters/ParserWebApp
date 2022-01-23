@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Application.Statistics.Commands.ParseUrl;
+namespace ParserWebApp.Application.Statistics.Commands.ParseUrl;
 
 public class ParseUrlCommandValidator : AbstractValidator<ParseUrlCommand>
 {
